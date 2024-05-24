@@ -9,12 +9,10 @@ import java.util.Random;  // (World, Actor, GreenfootImage, Greenfoot and MouseI
  */
 public abstract class Card extends Actor
 {
-    private int num;
-    private String color;
+    public int num;
+    public String color;
     
     public Card(){
-        
-        
         num = weightedProbability();
         double cProb = Math.random();
         if(cProb < 0.33){
