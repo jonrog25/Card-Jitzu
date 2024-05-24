@@ -13,36 +13,58 @@ public class DojoWorld extends World
      * Constructor for objects of class DojoWorld.
      * 
      */
+    private Penguin userPenguin;
+    private Penguin computerPenguin;
+    
     public DojoWorld()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1);
-        
-        GreenfootImage bg = new GreenfootImage("bg.jpeg"); // Replace with your image file name
-        bg.scale(getWidth(), getHeight()); // Scale the image to fit the world dimensions
-        setBackground(bg); // Set the resized image as the background
-        
-        prepareInitial();
-    }
-    /**
-     * Prepare the world for the start of the program.
-     * That is: create the initial objects and add them to the world.
-     */
-    private void prepareInitial()
-    {
-        addObject(new EnemyPenguin(), 425, 275);
-        addObject(new YourPenguin(), 175, 275);
+        super(600, 400, 1); // Set the size of the world
+        userPenguin = new Penguin(true); // The user's penguin
+        computerPenguin = new Penguin(false); // The computer's penguin
+        addObject(userPenguin, 150, 300); // Add user penguin to the world
+        addObject(computerPenguin, 450, 300);
     }
     
-    public Card pickCard()
-    {
-        double cProb = Math.random();
-        if(cProb < 0.33){
-            return new FireCard();
-        }else if(cProb < 0.66){
-            return new WaterCard();
-        }else{
-            return new SnowCard();
+    public void act() {
+        if (Greenfoot.mouseClicked(null)) {
+            playRound();
         }
     }
+
+    private void playRound() {
+        Card userCard = userPenguin.playCard();
+        Card computerCard = computerPenguin.playCard();
+
+        if (userCard != null && computerCard != null) {
+            addObject(userCard, 200, 300);
+            showText(""+userCard.getValue(), 200, 300);
+            addObject(computerCard, 400, 300);
+            showText(""+computerCard.getValue(), 400, 300);
+
+            if (userCard.beats(computerCard)) {
+                userPenguin.winCards(userCard, computerCard);
+                Greenfoot.delay(50);
+                removeObjects(getObjects(Card.class));
+                showText("", 200, 300);
+                showText("", 400, 300);
+            } else if (computerCard.beats(userCard)) {
+                computerPenguin.winCards(userCard, computerCard);
+                Greenfoot.delay(50);
+                removeObjects(getObjects(Card.class));
+                showText("", 200, 300);
+                showText("", 400, 300);
+            } else {
+                // If it's a tie, return cards to the respective decks
+                userPenguin.winCards(userCard, null);
+                computerPenguin.winCards(computerCard, null);
+                Greenfoot.delay(50);
+                removeObjects(getObjects(Card.class));
+                showText("", 200, 300);
+                showText("", 400, 300);
+            }
+        }
+    }
+    
+    
+    
 }
