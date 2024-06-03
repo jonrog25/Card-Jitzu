@@ -37,26 +37,46 @@ public class Penguin extends Actor {
             deck.remove(deck.size() - 1);
         }
     }
-    
-    public Card showNextCard(){
-        return deck.get(0); // show next card idk if this is helpful
-    }
 
     public Card playCard() {
-        if (!deck.isEmpty()) {
+        
+        if(!isUser){
+            if (!deck.isEmpty()) {
             return deck.remove(0); // Play the top card
+            }
         }
+        
+        if(isUser){
+            //TBA - return card that was clicked by user
+        }
+        
         return null;
+    }
+    
+    public Card getCard(int i){
+        return deck.get(i);
     }
 
     public void winCards(Card card1, Card card2) {
         deck.add(card1);
         deck.add(card2);
+        Greenfoot.delay(50);
+        if(isUser){
+            getWorld().showText("You win this round :)", 300, 100);
+        } else {
+            getWorld().showText("You lose this round :(", 300, 100);
+        }
+        Greenfoot.delay(50);
+        getWorld().showText("", 300, 100);
     }
     
     public void checkStatus(){
         if(deck.isEmpty()){
             setImage("skull.png");
         }
+    }
+    
+    public int getDeckSize(){
+        return deck.size();
     }
 }

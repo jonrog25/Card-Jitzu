@@ -26,8 +26,14 @@ public class DojoWorld extends World
     }
     
     public void act() {
-        if (Greenfoot.mouseClicked(null)) {
+        if (Greenfoot.isKeyDown("p")) {
             playRound();
+        }
+        showText("Deck Count: "+userPenguin.getDeckSize(), 150, 350);
+        showText("Deck Count: "+computerPenguin.getDeckSize(),450, 350);
+        for(int i = 0; i < userPenguin.getDeckSize(); i++){
+            addObject(userPenguin.getCard(i), 100, 50 + (i*25));
+            showText(""+userPenguin.getCard(i).getValue(), 100, 50 + (i*25));
         }
     }
 
