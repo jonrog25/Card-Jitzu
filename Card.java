@@ -35,6 +35,11 @@ public class Card extends Actor {
 
     public boolean beats(Card other) {
         if (this.type.equals(other.type)) {
+            if(this.value == other.value){
+                // idk what should happen but need to check for this
+                int random = (int)(Math.random())*100;
+                return random < 50; //we could do something like this: random
+            }
             return this.value > other.value;
         } else if (this.type.equals("Fire") && other.type.equals("Snow")) {
             return true;

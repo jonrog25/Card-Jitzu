@@ -37,6 +37,10 @@ public class Penguin extends Actor {
             deck.remove(deck.size() - 1);
         }
     }
+    
+    public Card showNextCard(){
+        return deck.get(0); // show next card idk if this is helpful
+    }
 
     public Card playCard() {
         if (!deck.isEmpty()) {
