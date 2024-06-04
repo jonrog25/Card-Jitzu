@@ -47,7 +47,9 @@ public class Penguin extends Actor {
         }
         
         if(isUser){
-            //TBA - return card that was clicked by user
+            String input = Greenfoot.ask("Input the position of the card you wish to play (0-9)");
+            int num_input = Integer.parseInt(input);
+            return deck.remove(num_input);
         }
         
         return null;
