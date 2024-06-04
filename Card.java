@@ -18,10 +18,13 @@ public class Card extends Actor {
         switch(this.type){
             case "Fire" :
                 setImage("Fire0.png");
+                break;
             case "Water" :
                 setImage("Water0.png");
+                break;
             case "Snow" :
                 setImage("Snow0.png");
+                break;
         }
     }
 

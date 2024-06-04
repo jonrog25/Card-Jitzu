@@ -54,9 +54,11 @@ public class Penguin extends Actor {
         deck.add(card2);
     }
     
-    public void checkStatus(){
+    public boolean checkStatus(){
         if(deck.isEmpty()){
             setImage("skull.png");
+            return false;
         }
+        return true;
     }
 }
