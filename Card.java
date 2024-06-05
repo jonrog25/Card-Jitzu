@@ -11,10 +11,13 @@ import java.util.Random;  // (World, Actor, GreenfootImage, Greenfoot and MouseI
 public class Card extends Actor {
     private String type;
     private int value;
+    
 
     public Card(String type, int value) {
         this.type = type;
         this.value = value;
+        
+        //to-do: nest switch statements so that there is a Fire 1-9 image, Water 1-9, etc
         switch(this.type){
             case "Fire" :
                 setImage("Fire0.png");
@@ -27,6 +30,12 @@ public class Card extends Actor {
                 break;
         }
     }
+    
+    public Card(){
+        type = "Fire";
+        value = 1;
+    }
+    
 
     public String getType() {
         return type;
@@ -37,12 +46,8 @@ public class Card extends Actor {
     }
 
     public boolean beats(Card other) {
+        //to-do: add animations
         if (this.type.equals(other.type)) {
-            if(this.value == other.value){
-                // idk what should happen but need to check for this
-                int random = (int)(Math.random())*100;
-                return random < 50; //we could do something like this: random
-            }
             return this.value > other.value;
         } else if (this.type.equals("Fire") && other.type.equals("Snow")) {
             return true;

@@ -37,21 +37,39 @@ public class Penguin extends Actor {
             deck.remove(deck.size() - 1);
         }
     }
-    
-    public Card showNextCard(){
-        return deck.get(0); // show next card idk if this is helpful
-    }
 
     public Card playCard() {
-        if (!deck.isEmpty()) {
+        
+        if(!isUser){
+            if (!deck.isEmpty()) {
             return deck.remove(0); // Play the top card
+            }
         }
+        
+        if(isUser){
+            String input = Greenfoot.ask("Input the position of the card you wish to play (0-9)");
+            int num_input = Integer.parseInt(input);
+            return deck.remove(num_input);
+        }
+        
         return null;
+    }
+    
+    public Card getCard(int i){
+        return deck.get(i);
     }
 
     public void winCards(Card card1, Card card2) {
         deck.add(card1);
         deck.add(card2);
+        Greenfoot.delay(50);
+        if(isUser){
+            getWorld().showText("You win this round :)", 300, 100);
+        } else {
+            getWorld().showText("You lose this round :(", 300, 100);
+        }
+        Greenfoot.delay(50);
+        getWorld().showText("", 300, 100);
     }
     
     public boolean checkStatus(){
@@ -60,5 +78,9 @@ public class Penguin extends Actor {
             return false;
         }
         return true;
+    }
+    
+    public int getDeckSize(){
+        return deck.size();
     }
 }

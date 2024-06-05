@@ -31,8 +31,17 @@ public class DojoWorld extends World
     }
     
     public void act() {
-        if (Greenfoot.mouseClicked(null)) {
+        if (Greenfoot.isKeyDown("space")) {
             playRound();
+        }
+        showText("Deck Count: "+userPenguin.getDeckSize(), 150, 350);
+        showText("Deck Count: "+computerPenguin.getDeckSize(),450, 350);
+        for(int i = 0; i < userPenguin.getDeckSize(); i++){
+            if(userPenguin.getCard(i) != null){
+                addObject(userPenguin.getCard(i), 100, 50 + (i*25));
+                //showText(""+userPenguin.getCard(i).getValue(), 100, 50 + (i*25));
+                showText(""+i, 60, 50 + (i*25));
+            }
         }
     }
 
@@ -41,7 +50,7 @@ public class DojoWorld extends World
         Card computerCard = computerPenguin.playCard();
 
         if (userCard != null && computerCard != null) {
-            addObject(userCard, 200, 300);
+            userCard.setLocation(200, 300);
             showText(""+userCard.getValue(), 200, 300);
             addObject(computerCard, 400, 300);
             showText(""+computerCard.getValue(), 400, 300);
