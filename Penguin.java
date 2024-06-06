@@ -26,16 +26,21 @@ public class Penguin extends Actor {
     }
 
     private void initializeDeck() {
-        for (int i = 1; i <= 9; i++) {
-            deck.add(new Card("Fire", i));
-            deck.add(new Card("Water", i));
-            deck.add(new Card("Snow", i));
+        for (int i = 1; i <= 10; i++) {
+            double chance = Math.random();
+            if(chance < 0.33){
+                deck.add(new Card("Fire", i));
+            } else if(chance < 0.66) {
+                deck.add(new Card("Water", i));
+            } else {
+                deck.add(new Card("Snow", i));
+            }
         }
         Collections.shuffle(deck); // Shuffle the deck
         // Limit the deck to 10 cards for simplicity
-        while (deck.size() > 10) {
-            deck.remove(deck.size() - 1);
-        }
+        //while (deck.size() > 10) {
+            //deck.remove(deck.size() - 1);
+        //}
     }
 
     public Card playCard() {
@@ -72,9 +77,8 @@ public class Penguin extends Actor {
         getWorld().showText("", 300, 100);
     }
     
-    public boolean checkStatus(){
+    public boolean inPlay(){
         if(deck.isEmpty()){
-            setImage("skull.png");
             return false;
         }
         return true;

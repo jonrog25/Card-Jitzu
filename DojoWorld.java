@@ -15,8 +15,8 @@ public class DojoWorld extends World
      */
     private Penguin userPenguin;
     private Penguin computerPenguin;
-    private int userScore;
-    private int compScore;
+    //private int userScore;
+    //private int compScore;
     
     public DojoWorld()
     {    
@@ -25,9 +25,7 @@ public class DojoWorld extends World
         computerPenguin = new Penguin(false); // The computer's penguin
         addObject(userPenguin, 150, 300); // Add user penguin to the world
         addObject(computerPenguin, 450, 300);
-        userScore = 0;
-        compScore = 0;
-        showText("User: " + userScore + "Computer: "+ compScore, 300, 50);
+        
     }
     
     public void act() {
@@ -56,38 +54,40 @@ public class DojoWorld extends World
             showText(""+computerCard.getValue(), 400, 300);
             
             if (userCard.beats(computerCard)) {
+                Greenfoot.delay(50);
                 userPenguin.winCards(userCard, computerCard);
                 Greenfoot.delay(50);
                 removeObjects(getObjects(Card.class));
                 showText("", 200, 300);
                 showText("", 400, 300);
-                userScore++;
             } else if (computerCard.beats(userCard)) {
+                Greenfoot.delay(50);
                 computerPenguin.winCards(userCard, computerCard);
                 Greenfoot.delay(50);
                 removeObjects(getObjects(Card.class));
                 showText("", 200, 300);
                 showText("", 400, 300);
-                compScore++;
             } else {
                 // If it's a tie, return cards to the respective decks
+                Greenfoot.delay(50);
                 userPenguin.winCards(userCard, null);
                 computerPenguin.winCards(computerCard, null);
                 Greenfoot.delay(50);
                 removeObjects(getObjects(Card.class));
                 showText("", 200, 300);
                 showText("", 400, 300);
-                checkEndGame();
             }
+            checkEndGame();
             
         }
     }
      private void checkEndGame() {
-        if (userPenguin.checkStatus() || computerPenguin.checkStatus()) {
-            String winner = null; 
-            if (userScore > compScore) {winner = "User Wins!";}
-            else{ winner ="Computer Wins!";}
-            showText(winner, 300, 200);
+        if(!userPenguin.inPlay()){
+            showText("You're out of cards, you lose!!", 300, 200);
+            Greenfoot.stop();
+        }
+        if(!computerPenguin.inPlay()){
+            showText("The opponent ran out of cards, you win", 300, 200);
             Greenfoot.stop();
         }
     }
