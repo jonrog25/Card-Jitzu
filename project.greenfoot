@@ -4,6 +4,7 @@ class.Penguin.image=tux.png
 dependency1.from=DojoWorld
 dependency1.to=Penguin
 dependency1.type=UsesDependency
+<<<<<<< Updated upstream
 dependency2.from=DojoWorld
 dependency2.to=Card
 dependency2.type=UsesDependency
@@ -17,6 +18,15 @@ editor.fx.0.y=25
 height=875
 package.numDependencies=3
 package.numTargets=3
+=======
+editor.fx.0.height=0
+editor.fx.0.width=0
+editor.fx.0.x=0
+editor.fx.0.y=0
+height=808
+package.numDependencies=1
+package.numTargets=9
+>>>>>>> Stashed changes
 project.charset=UTF-8
 publish.hasSource=false
 publish.locked=true
@@ -55,5 +65,10 @@ target3.y=0
 version=3.1.0
 width=1440
 world.lastInstantiated=DojoWorld
+<<<<<<< Updated upstream
 xPosition=0
 yPosition=25
+=======
+xPosition=518
+yPosition=89
+>>>>>>> Stashed changes
