@@ -10,41 +10,17 @@ dependency1.from=DojoWorld
 dependency1.to=Penguin
 dependency1.type=UsesDependency
 dependency2.from=DojoWorld
-<<<<<<< Updated upstream
 dependency2.to=Card
 dependency2.type=UsesDependency
 dependency3.from=Penguin
 dependency3.to=Card
 dependency3.type=UsesDependency
-=======
-dependency2.to=YourPenguin
-dependency2.type=UsesDependency
-dependency3.from=DojoWorld
-dependency3.to=Card
-dependency3.type=UsesDependency
-dependency4.from=DojoWorld
-dependency4.to=FireCard
-dependency4.type=UsesDependency
-dependency5.from=DojoWorld
-dependency5.to=WaterCard
-dependency5.type=UsesDependency
-dependency6.from=DojoWorld
-dependency6.to=SnowCard
-dependency6.type=UsesDependency
-dependency7.from=Penguin
-dependency7.to=Card
-dependency7.type=UsesDependency
->>>>>>> Stashed changes
-editor.fx.0.height=900
-editor.fx.0.width=1440
+editor.fx.0.height=0
+editor.fx.0.width=0
 editor.fx.0.x=0
 editor.fx.0.y=0
 height=875
-<<<<<<< Updated upstream
 package.numDependencies=3
-=======
-package.numDependencies=7
->>>>>>> Stashed changes
 package.numTargets=8
 project.charset=UTF-8
 publish.hasSource=false
