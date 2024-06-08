@@ -20,13 +20,19 @@ public class Card extends Actor {
         //to-do: nest switch statements so that there is a Fire 1-9 image, Water 1-9, etc
         switch(this.type){
             case "Fire" :
-                setImage("Fire0.png");
+                GreenfootImage fire = new GreenfootImage("Fire" + value + ".png");
+                fire.scale(fire.getWidth()/30, fire.getHeight()/30);
+                setImage(fire);
                 break;
             case "Water" :
-                setImage("Water0.png");
+                GreenfootImage water = new GreenfootImage("Water" + value + ".png");
+                water.scale(water.getWidth()/30, water.getHeight()/30);
+                setImage(water);
                 break;
             case "Snow" :
-                setImage("Snow0.png");
+                GreenfootImage snow = new GreenfootImage("Snow" + value + ".png");
+                snow.scale(snow.getWidth()/30, snow.getHeight()/30);
+                setImage(snow);
                 break;
         }
     }
