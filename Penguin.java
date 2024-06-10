@@ -96,11 +96,11 @@ public class Penguin extends Actor {
         if (card1 != null) deck.add(card1);
         if (card2 != null) deck.add(card2);
         Greenfoot.delay(50);
-        if (isUser) {
-            getWorld().showText("You win this round :)", 300, 100);
-        } else {
-            getWorld().showText("You lose this round :(", 300, 100);
-        }
+        //if (isUser) {
+            //getWorld().showText("You win this round :)", 300, 100);
+        //} else {
+            //getWorld().showText("You lose this round :(", 300, 100);
+        //}
         Greenfoot.delay(50);
         getWorld().showText("", 300, 100);
     }

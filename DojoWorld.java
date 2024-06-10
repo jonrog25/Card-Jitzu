@@ -103,14 +103,20 @@ public class DojoWorld extends World {
             showText("" + computerCard.getValue(), 400, 300);
 
             if (userCard.beats(computerCard)) {
+                showText("You win this round :)", 300, 125);
                 Greenfoot.delay(50);
+                showText("", 300, 125);
                 userPenguin.winCards(userCard, computerCard);
             } else if (computerCard.beats(userCard)) {
+                showText("You lose this round :(", 300, 125);
                 Greenfoot.delay(50);
+                showText("", 300, 125);
                 computerPenguin.winCards(userCard, computerCard);
                 userCard.removeNumberText();
             } else {
+                showText("Tie", 300, 125);
                 Greenfoot.delay(50);
+                showText("", 300, 125);
                 userPenguin.winCards(userCard, null);
                 computerPenguin.winCards(computerCard, null);
             }
