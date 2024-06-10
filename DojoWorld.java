@@ -108,6 +108,7 @@ public class DojoWorld extends World {
             } else if (computerCard.beats(userCard)) {
                 Greenfoot.delay(50);
                 computerPenguin.winCards(userCard, computerCard);
+                userCard.removeNumberText();
             } else {
                 Greenfoot.delay(50);
                 userPenguin.winCards(userCard, null);
@@ -116,8 +117,8 @@ public class DojoWorld extends World {
             Greenfoot.delay(50);
             removeObjects(getObjects(Card.class));
             clearRoundText(); // Clear round message
-            updateCardPositions(); // Update card positions and their numbers
-            assignCardNumbers(); // Reassign card numbers after updating positions
+            //updateCardPositions(); // Update card positions and their numbers
+            //assignCardNumbers(); // Reassign card numbers after updating positions
             checkEndGame();
         }
     }
